@@ -25,6 +25,11 @@ def _get_text_rank(doc_text, path_stage1, path_stage2):
       f.write("%s\n" % pytextrank.pretty_print(rl._asdict()))
 END
 
+=method get_text_rank
+
+Returns the PyTextRank data for a given document.
+
+=cut
 method get_text_rank( (Str) $document ) {
 	my $intermediate = Path::Tiny->tempfile;
 	my $output = Path::Tiny->tempfile;
