@@ -8,6 +8,7 @@ use Moo;
 use JSON::MaybeXS qw(decode_json);
 use Path::Tiny;
 
+use Inline::Python qw();
 use Inline Python => <<'END';
 import pytextrank
 
