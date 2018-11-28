@@ -3,7 +3,7 @@
 use Test::Most tests => 1;
 
 use Modern::Perl;
-use Renard::Incunabula::NLP::PyTextRank;
+use Renard::Incunabula::API::PyTextRank;
 
 subtest "Extract phrases from example text" => sub {
 	my $text = <<EOF;
@@ -23,7 +23,7 @@ EOF
 		'natural numbers',
 	);
 
-	my $tr = Renard::Incunabula::NLP::PyTextRank->new;
+	my $tr = Renard::Incunabula::API::PyTextRank->new;
 	my $data = $tr->get_text_rank( "$text" );
 
 	cmp_deeply $data, superbagof(
