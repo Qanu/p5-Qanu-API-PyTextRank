@@ -4,7 +4,7 @@
 
 =head1 NAME
 
-Renard::Incunabula::NLP::PyTextRank - Provides access to PyTextRank
+Renard::API::PyTextRank - Provides access to PyTextRank
 
 =head1 VERSION
 
@@ -26,7 +26,7 @@ Returns the PyTextRank data for a given document.
 
 =head1 SEE ALSO
 
-L<Repository information|http://project-renard.github.io/doc/development/repo/p5-Renard-Incunabula-NLP-PyTextRank/>
+L<Repository information|http://project-renard.github.io/doc/development/repo/p5-Renard-API-PyTextRank/>
 
 =head1 AUTHOR
 
