@@ -6,6 +6,9 @@ use Modern::Perl;
 use Renard::API::PyTextRank;
 
 subtest "Extract phrases from example text" => sub {
+	# Install data
+	#system( qw(python3 -m spacy download en_core_web_sm) );
+
 	my $text = <<EOF;
 Compatibility of systems of linear constraints over the set of natural numbers.
 Criteria of compatibility of a system of linear Diophantine equations, strict

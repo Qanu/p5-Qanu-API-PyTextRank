@@ -10,20 +10,22 @@ use Path::Tiny;
 
 use Inline::Python qw();
 use Inline Python => <<'END';
+import spacy
 import pytextrank
 
-def _get_text_rank(doc_text, path_stage1, path_stage2):
+def _get_text_rank(doc_text):
   doc_text = doc_text.decode('UTF-8')
-  path_stage1 = path_stage1.decode('UTF-8')
-  path_stage2 = path_stage2.decode('UTF-8')
-  doc_data = [ { "id": "777", "text": doc_text} ]
-  with open(path_stage1, 'w') as f:
-    for graf in pytextrank.parse_doc(doc_data):
-        f.write("%s\n" % pytextrank.pretty_print(graf._asdict()))
-  graph, ranks = pytextrank.text_rank(path_stage1)
-  with open(path_stage2, 'w') as f:
-    for rl in pytextrank.normalize_key_phrases(path_stage1, ranks):
-      f.write("%s\n" % pytextrank.pretty_print(rl._asdict()))
+
+  # load a spaCy model, depending on language, scale, etc.
+  nlp = spacy.load("en_core_web_sm")
+
+  # add PyTextRank to the spaCy pipeline
+  tr = pytextrank.TextRank()
+  nlp.add_pipe(tr.PipelineComponent, name="textrank", last=True)
+
+  doc = nlp(doc_text)
+
+  return doc._.phrases
 END
 
 =method get_text_rank
@@ -32,19 +34,19 @@ Returns the PyTextRank data for a given document.
 
 =cut
 method get_text_rank( (Str) $document ) {
-	my $intermediate = Path::Tiny->tempfile;
-	my $output = Path::Tiny->tempfile;
-
 	use Try::Tiny;
-	try {
-		_get_text_rank( "$document", "$intermediate" , "$output");
+	my $data = try {
+		_get_text_rank( "$document");
 	} catch {
 		warn "$_";
 	};
 
-	my @data = map { decode_json($_) } $output->lines_utf8;
+	my @phrase_data = map {
+		my $phrase = $_;
+		+{ %$phrase{qw(text rank count)} }
+	} @$data;
 
-	\@data;
+	\@phrase_data;
 }
 
 

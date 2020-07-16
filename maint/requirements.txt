@@ -1,3 +1,1 @@
-spacy==1.8.2
-networkx==1.11
-pytextrank
+pytextrank>=2.0.0
