@@ -1,7 +1,10 @@
 native:
   debian:
-    packages: ~
+    packages:
+      - python3-dev
   macos-homebrew:
-    packages: ~
+    packages:
+      - python
   msys2-mingw64:
-    packages: ~
+    packages:
+      - python
