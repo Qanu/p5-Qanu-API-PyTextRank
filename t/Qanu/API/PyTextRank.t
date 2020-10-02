@@ -3,7 +3,7 @@
 use Test::Most tests => 1;
 
 use Modern::Perl;
-use Renard::API::PyTextRank;
+use Qanu::API::PyTextRank;
 
 subtest "Extract phrases from example text" => sub {
 	# Install data
@@ -26,7 +26,7 @@ EOF
 		'natural numbers',
 	);
 
-	my $tr = Renard::API::PyTextRank->new;
+	my $tr = Qanu::API::PyTextRank->new;
 	my $data = $tr->get_text_rank( "$text" );
 
 	cmp_deeply $data, superbagof(

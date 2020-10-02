@@ -4,19 +4,11 @@
 
 =head1 NAME
 
-Renard::API::PyTextRank - Provides access to PyTextRank
+Qanu::API::PyTextRank - Provides access to PyTextRank
 
 =head1 VERSION
 
 version 0.001
-
-=head1 EXTENDS
-
-=over 4
-
-=item * L<Moo::Object>
-
-=back
 
 =head1 METHODS
 
@@ -26,15 +18,13 @@ Returns the PyTextRank data for a given document.
 
 =head1 SEE ALSO
 
-L<Repository information|http://project-renard.github.io/doc/development/repo/p5-Renard-API-PyTextRank/>
-
 =head1 AUTHOR
 
-Project Renard
+Zakariyya Mughal <zmughal@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2018 by Project Renard.
+This software is copyright (c) 2018 by Zakariyya Mughal.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

@@ -1,5 +1,5 @@
 use Renard::Incunabula::Common::Setup;
-package Renard::API::PyTextRank;
+package Qanu::API::PyTextRank;
 # ABSTRACT: Provides access to PyTextRank
 
 use Renard::Incunabula::Common::Types qw(Str);
@@ -53,6 +53,6 @@ method get_text_rank( (Str) $document ) {
 1;
 =head1 SEE ALSO
 
-L<Repository information|http://project-renard.github.io/doc/development/repo/p5-Renard-API-PyTextRank/>
+
 
 =cut
